@@ -1,9 +1,18 @@
+/* Variables de color*/
+:root {
+      --rojo: #b80c09;
+      --negro: #111111;
+      --blanco: #FFFFFF;
+      --borde-gris: #E0E0E0;
+      --dorado: #D4AF37;
+    }
+
 body {
     margin: 0;
     padding: 24px;
     font-family: Arial, sans-serif;
-    background-color: #f3f4f6;
-    color: #1f2937;
+    background-color: var(--blanco);
+    color: var(--rojo);
 }
 
 main {
@@ -15,5 +24,22 @@ main {
 }
 
 h1 {
-    color: #166534;
+    color: var(--rojo);
 }
+
+.navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 5%;
+      background-color: var(--blanco);
+      border-bottom: 2px solid var(--borde-gris);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+}
+  .logo img {
+      height: 48px;
+      width: auto;
+      display: block;
+    }
