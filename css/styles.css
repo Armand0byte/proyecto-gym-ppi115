@@ -77,3 +77,72 @@ footer {
     font-family: sans-serif;
     max-width: 450px;  /* Evita que el texto ocupe todo el ancho */
   }
+
+  .seccion{
+    margin-top: 24px;
+  }
+  .cuadro {
+      background-color: var(--rojo);
+      padding: 16px 20px;
+  }
+
+  .cuadro h2 {
+      color: var(--blanco);
+      margin: 0;
+      font-size: 1.5rem;
+      letter-spacing: 1px;
+  }
+
+  .galeria {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Crea 2 columnas iguales */
+    gap: 20px;                             /* Espacio entre cada tarjeta */
+    margin-top: 24px;
+}
+
+.items {
+    border: 2px solid var(--borde-gris);   /* Borde gris idéntico al de tu imagen */
+    padding: 12px;                         /* Margen interno para la imagen */
+    background-color: var(--blanco);
+    display: flex;
+    flex-direction: column;
+}
+
+.items img {
+    width: 100%;
+    height: 180px;                          /* Altura fija para uniformidad */
+    object-fit: cover;                      /* Mantiene proporciones sin deformar */
+    border-radius: 4px;
+    display: block;
+}
+
+/* Texto e información de la tarjeta */
+.contenido-tarjeta {
+    padding-top: 12px;
+}
+
+.contenido-tarjeta h3 {
+    color: var(--negro);
+    font-size: 1.1rem;
+    margin: 0 0 6px 0;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.contenido-tarjeta p {
+    color: var(--rojo);
+    font-size: 0.9rem;
+    margin: 0 0 10px 0;
+    line-height: 1.3;
+}
+
+.contenido-tarjeta a {
+    color: var(--dorado);                  /* Utiliza tu variable dorada */
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.contenido-tarjeta a:hover {
+    text-decoration: underline;
+}
