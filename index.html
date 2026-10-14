@@ -3,33 +3,795 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FitNew</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <title>FitNew - Domina El Gym</title>
+    <meta name="description" content="Plataforma de rutinas, alimentación y suplementación deportiva para maximizar tu rendimiento fitness.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-red: #b80c09;
+            --primary-red-glow: rgba(184, 12, 9, 0.6);
+            --dark-bg: #0d0e12;
+            --card-bg: rgba(22, 24, 31, 0.75);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --gold: #D4AF37;
+            --gold-glow: rgba(212, 175, 55, 0.4);
+            --text-main: #f0f2f5;
+            --text-sub: #a0a5b5;
+            --nav-height: 75px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--nav-height);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 5%;
+            z-index: 1000;
+            background: rgba(13, 14, 18, 0.65);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(13, 14, 18, 0.95);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border-bottom: 1px solid rgba(184, 12, 9, 0.3);
+        }
+
+        .navbar .logo img {
+            height: 48px;
+            width: auto;
+            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.2));
+            transition: transform 0.3s ease;
+        }
+
+        .navbar .logo img:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: var(--primary-red);
+            transition: width 0.3s ease;
+            box-shadow: 0 0 8px var(--primary-red-glow);
+        }
+
+        .nav-links a:hover {
+            color: #fff;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hero-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: radial-gradient(circle at center, #1a1c24 0%, #0d0e12 100%);
+        }
+
+        #hero-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: auto;
+        }
+
+        .hero-bg-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('img/inicio_img.jpg') center/cover no-repeat;
+            opacity: 0.25;
+            mix-blend-mode: luminosity;
+            z-index: 0;
+            filter: blur(2px) contrast(1.2);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 900px;
+            padding: 0 20px;
+            pointer-events: none;
+        }
+
+        .hero-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            line-height: 1.1;
+            color: #ffffff;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.75);
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero-title span {
+            background: linear-gradient(135deg, #ffffff 0%, var(--primary-red) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 4px rgba(184, 12, 9, 0.28));
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.35rem);
+            font-weight: 600;
+            color: #e0e0e0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 35px;
+            background: rgba(0, 0, 0, 0.4);
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-scroll-btn {
+            pointer-events: auto;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(184, 12, 9, 0.8);
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2rem;
+            box-shadow: 0 0 20px var(--primary-red-glow);
+            transition: all 0.3s ease;
+            animation: bounce 2s infinite;
+        }
+
+        .hero-scroll-btn:hover {
+            background: var(--primary-red);
+            transform: scale(1.15);
+            box-shadow: 0 0 30px var(--primary-red-glow);
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-12px); }
+            60% { transform: translateY(-6px); }
+        }
+
+        main {
+            position: relative;
+            z-index: 10;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 40px 20px 80px;
+        }
+
+        .seccion {
+            margin-bottom: 90px;
+        }
+
+        .cuadro-header {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .cuadro-header::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100px;
+            height: 2px;
+            background: var(--primary-red);
+            box-shadow: 0 0 10px var(--primary-red-glow);
+        }
+
+        .cuadro-header i {
+            font-size: 2rem;
+            color: var(--primary-red);
+            text-shadow: 0 0 10px var(--primary-red-glow);
+        }
+
+        .cuadro-header h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #ffffff;
+        }
+
+        .galeria {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 30px;
+        }
+
+        .items {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .items::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 16px;
+            border: 1px solid transparent;
+            transition: all 0.4s ease;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .items:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(184, 12, 9, 0.25);
+        }
+
+        .items:hover::before {
+            border-color: rgba(184, 12, 9, 0.5);
+        }
+
+        .img-container {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .items img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .items:hover img {
+            transform: scale(1.12);
+        }
+
+        .img-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(13, 14, 18, 0.9) 100%);
+        }
+
+        .contenido-tarjeta {
+            padding: 22px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: space-between;
+        }
+
+        .contenido-tarjeta h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            line-height: 1.3;
+        }
+
+        .contenido-tarjeta p {
+            font-size: 0.9rem;
+            color: var(--text-sub);
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .contenido-tarjeta a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: transparent;
+            color: var(--gold);
+            border: 1px solid var(--gold);
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .contenido-tarjeta a:hover {
+            background: var(--gold);
+            color: #0d0e12;
+            box-shadow: 0 0 15px var(--gold-glow);
+            transform: translateX(3px);
+        }
+
+        .contenido-tarjeta a i {
+            transition: transform 0.3s ease;
+        }
+
+        .contenido-tarjeta a:hover i {
+            transform: translateX(5px);
+        }
+
+        .rutinas-placeholder {
+            background: var(--card-bg);
+            border: 2px dashed rgba(255, 255, 255, 0.15);
+            border-radius: 16px;
+            padding: 50px 20px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .rutinas-placeholder i {
+            font-size: 3.5rem;
+            color: var(--primary-red);
+            margin-bottom: 15px;
+            opacity: 0.8;
+        }
+
+        .rutinas-placeholder h3 {
+            font-size: 1.5rem;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .rutinas-placeholder p {
+            color: var(--text-sub);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        footer {
+            background: #08090b;
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        footer p {
+            color: var(--text-sub);
+            font-size: 0.9rem;
+        }
+
+        footer .logo-footer {
+            height: 38px;
+            opacity: 0.7;
+            filter: grayscale(30%);
+            transition: opacity 0.3s ease;
+        }
+
+        footer .logo-footer:hover {
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0 4%;
+            }
+            .nav-links {
+                display: none;
+            }
+            .cuadro-header h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
 
-    <header class="navbar">
-    <div class="logo">
-      <a href="img/logo.png">
-        <img src="img/logo.png" alt="FitNew">
-      </a>
-    </div>
+    <header class="navbar" id="navbar">
+        <div class="logo">
+            <a href="index.html">
+                <img src="img/logo.png" alt="FitNew Logo">
+            </a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#rutinas">Rutinas</a></li>
+            <li><a href="#alimentacion">Alimentación</a></li>
+            <li><a href="#suplementacion">Suplementación</a></li>
+        </ul>
     </header>
 
-    <main>
-        <div class="contenedor1">
-            <img src="img/inicio_img.jpg" alt="Gym">
-            <div class="texto">
-                <h1>DOMINA EL GYM</h1>
-                <p>EL DOLOR QUE SIENTES HOY ES LA FUERZA QUE SENTIRÁS MAÑANA.</p>
-            </div>
+    <div class="hero-container">
+        <canvas id="hero-canvas"></canvas>
+        <div class="hero-bg-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">DOMINA EL <span>GYM</span></h1>
+            <br>
+            <p class="hero-subtitle">EL DOLOR QUE SIENTES HOY ES LA FUERZA QUE SENTIRÁS MAÑANA.</p>
+            <br>
+            <a href="#rutinas" class="hero-scroll-btn" title="Explorar FitNew">
+                <i class="fa-solid fa-chevron-down"></i>
+            </a>
         </div>
-    </main>
+    </div>
 
+    <main>
+        <!-- SECCIÓN 1: RUTINAS -->
+        <section class="seccion reveal" id="rutinas">
+            <div class="cuadro-header">
+                <i class="fa-solid fa-dumbbell"></i>
+                <h2>RUTINAS</h2>
+            </div>
+            
+            <div class="rutinas-placeholder">
+                <i class="fa-solid fa-person-running"></i>
+                <h3>Próximamente Rutinas de Entrenamiento</h3>
+                <p>Estamos diseñando rutinas especializadas de hipertrofia, fuerza y acondicionamiento. ¡Mantente atento!</p>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 2: ALIMENTACIÓN -->
+        <section class="seccion reveal" id="alimentacion">
+            <div class="cuadro-header">
+                <i class="fa-solid fa-utensils"></i>
+                <h2>ALIMENTACIÓN</h2>
+            </div>
+
+            <div class="galeria">
+                <!-- Card 1 -->
+                <div class="items">
+                    <div class="img-container">
+                        <img src="img/alimentoProte.jfif" alt="Proteína">
+                        <div class="img-overlay"></div>
+                    </div>
+                    <div class="contenido-tarjeta">
+                        <h3>ALIMENTOS RICOS EN PROTEÍNA</h3>
+                        <p>Conoce fuentes de proteína animal y vegetal</p>
+                        <a href="alimentos-proteina.html">Ver guía <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="items">
+                    <div class="img-container">
+                        <img src="img/dieta.jfif" alt="Dieta">
+                        <div class="img-overlay"></div>
+                    </div>
+                    <div class="contenido-tarjeta">
+                        <h3>COMIDAS SALUDABLES - TU SEMANA</h3>
+                        <p>Ideas para preparar platos equilibrados</p>
+                        <a href="comidas-semana.html">Ver guía <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="items">
+                    <div class="img-container">
+                        <img src="img/desayuno.jfif" alt="Desayuno">
+                        <div class="img-overlay"></div>
+                    </div>
+                    <div class="contenido-tarjeta">
+                        <h3>DESAYUNOS</h3>
+                        <p>Opciones sencillas para comenzar el día</p>
+                        <a href="desayunos.html">Ver guía <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="items">
+                    <div class="img-container">
+                        <img src="img/Vegano.jfif" alt="Vegano">
+                        <div class="img-overlay"></div>
+                    </div>
+                    <div class="contenido-tarjeta">
+                        <h3>ALIMENTACIÓN VEGANA</h3>
+                        <p>Guías, alimentos y menús para principiantes.</p>
+                        <a href="alimentacion-vegana.html">Ver guía <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>   
+            </div>
+        </section>
+
+        <!-- SECCIÓN 3: SUPLEMENTACIÓN -->
+        <section class="seccion reveal" id="suplementacion">
+            <div class="cuadro-header">
+                <i class="fa-solid fa-jar"></i>
+                <h2>SUPLEMENTACIÓN</h2>
+            </div>    
+
+            <div class="galeria">
+                <!-- Card 1 -->
+                <div class="items">
+                    <div class="img-container">
+                        <img src="img/proteina.jpg" alt="Proteína">
+                        <div class="img-overlay"></div>
+                    </div>
+                    <div class="contenido-tarjeta">
+                        <h3>PROTEÍNA</h3>
+                        <p>Qué es, para qué sirve y cómo elegirla</p>
+                        <a href="proteina.html">Ver guía <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="items">
+                    <div class="img-container">
+                        <img src="img/creatina.png" alt="Creatina">
+                        <div class="img-overlay"></div>
+                    </div>
+                    <div class="contenido-tarjeta">
+                        <h3>CREATINA</h3>
+                        <p>Beneficios, usos y precauciones</p>
+                        <a href="creatina.html">Ver guía <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="items">
+                    <div class="img-container">
+                        <img src="img/preentreno.jpg" alt="Pre-entreno">
+                        <div class="img-overlay"></div>
+                    </div>
+                    <div class="contenido-tarjeta">
+                        <h3>PRE-ENTRENO</h3>
+                        <p>Energía y enfoque para tus entrenamientos</p>
+                        <a href="preentreno.html">Ver guía <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="items">
+                    <div class="img-container">
+                        <img src="img/cafeina.jpg" alt="Cafeína">
+                        <div class="img-overlay"></div>
+                    </div>
+                    <div class="contenido-tarjeta">
+                        <h3>CAFEÍNA</h3>
+                        <p>Aumento de la energía y el enfoque durante el entrenamiento</p>
+                        <a href="cafeina.html">Ver guía <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>   
+            </div>
+        </section>
+    </main>
 
     <footer>
         <p>&copy; FitNew - Todos los derechos reservados.</p>
         <img src="img/logoPie.png" alt="Logo FitNew" class="logo-footer">
     </footer>
+
+    <script>
+        /* Navbar Scroll Effect */
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        /* Scroll Reveal Animation */
+        const reveals = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.15 });
+
+        reveals.forEach(reveal => observer.observe(reveal));
+
+        /* Canvas: Animación interactiva de partículas exclusivamente en tonos Rojo y Negro */
+        const canvas = document.getElementById('hero-canvas');
+        const ctx = canvas.getContext('2d');
+
+        let width, height;
+        let particles = [];
+        let mouse = { x: null, y: null, radius: 140 };
+
+        function resizeCanvas() {
+            width = canvas.width = canvas.offsetWidth;
+            height = canvas.height = canvas.offsetHeight;
+            initParticles();
+        }
+
+        window.addEventListener('resize', resizeCanvas);
+        
+        window.addEventListener('mousemove', (e) => {
+            const rect = canvas.getBoundingClientRect();
+            mouse.x = e.clientX - rect.left;
+            mouse.y = e.clientY - rect.top;
+        });
+
+        window.addEventListener('mouseleave', () => {
+            mouse.x = null;
+            mouse.y = null;
+        });
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.size = Math.random() * 2 + 1;
+                this.vx = (Math.random() - 0.5) * 0.7;
+                this.vy = (Math.random() - 0.5) * 0.7;
+                // Exclusivamente colores rojo vivo y negro/gris oscuro
+                this.color = Math.random() > 0.4 ? '#b80c09' : '#1a1c24';
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                // Resplandor en rojo o sombra en oscuro
+                ctx.shadowBlur = this.color === '#b80c09' ? 8 : 2;
+                ctx.shadowColor = this.color === '#b80c09' ? '#b80c09' : 'rgba(0,0,0,0.8)';
+                ctx.fill();
+                ctx.shadowBlur = 0;
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+
+                if (this.x < 0 || this.x > width) this.vx *= -1;
+                if (this.y < 0 || this.y > height) this.vy *= -1;
+
+                // Física de reacción sutil al movimiento del ratón
+                if (mouse.x !== null && mouse.y !== null) {
+                    let dx = mouse.x - this.x;
+                    let dy = mouse.y - this.y;
+                    let distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < mouse.radius) {
+                        let force = (mouse.radius - distance) / mouse.radius;
+                        let directionX = dx / distance;
+                        let directionY = dy / distance;
+                        this.x -= directionX * force * 3.5;
+                        this.y -= directionY * force * 3.5;
+                    }
+                }
+            }
+        }
+
+        function initParticles() {
+            particles = [];
+            let numberOfParticles = Math.floor((width * height) / 11000);
+            for (let i = 0; i < numberOfParticles; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function connectParticles() {
+            for (let a = 0; a < particles.length; a++) {
+                for (let b = a + 1; b < particles.length; b++) {
+                    let dx = particles[a].x - particles[b].x;
+                    let dy = particles[a].y - particles[b].y;
+                    let distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < 105) {
+                        let opacity = 1 - (distance / 105);
+                        ctx.strokeStyle = `rgba(184, 12, 9, ${opacity * 0.35})`;
+                        ctx.lineWidth = 0.8;
+                        ctx.beginPath();
+                        ctx.moveTo(particles[a].x, particles[a].y);
+                        ctx.lineTo(particles[b].x, particles[b].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        function animateCanvas() {
+            ctx.clearRect(0, 0, width, height);
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+            }
+            connectParticles();
+            requestAnimationFrame(animateCanvas);
+        }
+
+        window.onload = () => {
+            resizeCanvas();
+            animateCanvas();
+        };
+    </script>
 </body>
 </html>
