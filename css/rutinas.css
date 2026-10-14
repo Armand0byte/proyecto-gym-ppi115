@@ -1,0 +1,390 @@
+/* Estilos de la sección Rutinas. Complementan css/styles.css. */
+.pagina-rutinas {
+    background: #f3f4f6;
+    color: #252525;
+    line-height: 1.6;
+}
+
+.pagina-rutinas * {
+    box-sizing: border-box;
+}
+
+.pagina-rutinas .navbar {
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.rutinas-nav {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    font-size: 0.95rem;
+}
+
+.rutinas-nav a {
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.rutinas-nav a:hover,
+.rutinas-nav a[aria-current="page"] {
+    color: var(--rojo, #b80c09);
+}
+
+.pagina-rutinas .breadcrumb-container {
+    max-width: 1060px;
+    margin: 18px auto 0;
+    background: #e9eaed;
+}
+
+.pagina-rutinas main.contenido-articulo {
+    max-width: 1060px;
+    padding: 32px;
+    margin: 20px auto 32px;
+}
+
+.pagina-rutinas h1 {
+    color: var(--rojo, #b80c09);
+    font-size: clamp(1.7rem, 4vw, 2.4rem);
+    line-height: 1.2;
+    margin: 12px 0;
+}
+
+.rutinas-etiqueta {
+    color: #7d0806;
+    font-size: 0.8rem;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.rutinas-intro {
+    max-width: 760px;
+    color: #555;
+}
+
+.rutinas-accesos,
+.rutinas-grupos {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 22px 0;
+}
+
+.rutinas-accesos a,
+.rutinas-grupos a,
+.rutinas-boton,
+.rutinas-filtro {
+    display: inline-block;
+    padding: 10px 16px;
+    border: 1px solid #d6d6d6;
+    border-radius: 6px;
+    background: #fff;
+    color: #7d0806;
+    font: inherit;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.rutinas-boton:hover,
+.rutinas-filtro:hover,
+.rutinas-accesos a:hover,
+.rutinas-grupos a:hover {
+    background: #fbefef;
+}
+
+.rutinas-filtro[aria-pressed="true"],
+.rutinas-grupos a[aria-current="page"] {
+    background: var(--rojo, #b80c09);
+    border-color: var(--rojo, #b80c09);
+    color: #fff;
+}
+
+.pagina-rutinas a:focus-visible,
+.pagina-rutinas button:focus-visible,
+.pagina-rutinas input:focus-visible {
+    outline: 3px solid #b88210;
+    outline-offset: 4px;
+}
+
+.rutinas-nota {
+    padding: 15px 18px;
+    margin: 24px 0;
+    border-left: 4px solid var(--rojo, #b80c09);
+    background: #fbf0f0;
+    border-radius: 0 6px 6px 0;
+}
+
+.rutinas-nota p {
+    margin: 0;
+}
+
+.rutinas-filtros {
+    padding: 20px;
+    margin: 28px 0 12px;
+    background: #f5f5f5;
+    border-radius: 8px;
+}
+
+.rutinas-filtros label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.rutinas-filtros input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #b8b8b8;
+    border-radius: 5px;
+    font: inherit;
+    background: white;
+}
+
+.rutinas-filtro-botones {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 14px;
+}
+
+.rutinas-resultados {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.rutinas-catalogo {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+    margin: 20px 0 32px;
+}
+
+.rutina-tarjeta {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #dedede;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #fff;
+}
+
+.rutina-tarjeta img {
+    display: block;
+    width: 100%;
+    height: 210px;
+    object-fit: contain;
+    background: white;
+    border-bottom: 1px solid #eee;
+}
+
+.rutina-tarjeta-texto {
+    padding: 20px;
+}
+
+.rutina-tarjeta h2 {
+    color: #242424;
+    margin: 8px 0;
+    font-size: 1.15rem;
+}
+
+.rutina-tarjeta p {
+    margin: 10px 0 16px;
+    color: #555;
+}
+
+.rutina-tarjeta a {
+    color: #8f0a07;
+    font-weight: bold;
+    text-underline-offset: 3px;
+}
+
+.rutinas-guias h2,
+.rutinas-fuentes h2 {
+    color: #242424;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--rojo, #b80c09);
+    margin: 32px 0 14px;
+    font-size: 1.4rem;
+}
+
+.ejercicio-ficha {
+    border: 1px solid #dedede;
+    border-radius: 10px;
+    margin: 28px 0;
+    overflow: hidden;
+    scroll-margin-top: 120px;
+}
+
+.ejercicio-demostracion {
+    margin: 0;
+    padding: 18px 20px 14px;
+    text-align: center;
+    background: white;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.ejercicio-demostracion img {
+    display: block;
+    width: min(100%, 640px);
+    height: auto;
+    margin: 0 auto;
+}
+
+.ejercicio-demostracion figcaption {
+    color: #666;
+    font-size: 0.82rem;
+    margin: 8px 0 12px;
+}
+
+.ejercicio-contenido {
+    padding: 24px;
+}
+
+.ejercicio-contenido h2 {
+    font-size: 1.6rem;
+    line-height: 1.3;
+    color: var(--rojo, #b80c09);
+    margin: 8px 0 14px;
+}
+
+.ejercicio-contenido h3 {
+    font-size: 1.08rem;
+    color: #252525;
+    margin: 24px 0 10px;
+}
+
+.ejercicio-datos {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
+    margin: 20px 0 12px;
+}
+
+.ejercicio-datos div {
+    padding: 12px;
+    background: #f6f6f6;
+    border-radius: 6px;
+}
+
+.ejercicio-datos dt {
+    color: #666;
+    font-size: 0.8rem;
+}
+
+.ejercicio-datos dd {
+    color: #7d0806;
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin: 4px 0 0;
+}
+
+.ejercicio-tecnica li {
+    margin: 9px 0;
+}
+
+.ejercicio-errores li {
+    margin: 5px 0;
+}
+
+.ejercicio-referencia {
+    color: #555;
+    font-size: 0.86rem;
+    margin-top: 24px;
+}
+
+.ejercicio-referencia a,
+.rutinas-fuentes a,
+.rutinas-pie a,
+.rutinas-nota a {
+    color: #8f0a07;
+    text-underline-offset: 3px;
+}
+
+.rutinas-fuentes {
+    font-size: 0.9rem;
+    overflow-wrap: anywhere;
+}
+
+.rutinas-fuentes li {
+    margin: 10px 0;
+}
+
+.rutinas-pie {
+    color: #dadada;
+    font-size: 0.8rem;
+    max-width: 900px;
+    margin: 12px auto 0;
+}
+
+.rutinas-pie a {
+    color: #edc970;
+}
+
+.rutina-preview img {
+    object-fit: contain !important;
+    background: white;
+    padding: 12px;
+}
+
+.rutinas-enlace-catalogo {
+    display: inline-block;
+    margin: 22px 0 10px;
+    color: #edc970;
+    font-weight: 600;
+    text-underline-offset: 4px;
+}
+
+.rutinas-creditos-inicio {
+    color: #b2b3bd;
+    font-size: 0.78rem;
+    margin-top: 16px;
+}
+
+.rutinas-creditos-inicio a {
+    color: #edc970;
+}
+
+.pagina-rutinas [hidden] {
+    display: none !important;
+}
+
+@media (max-width: 640px) {
+    body.pagina-rutinas {
+        padding: 12px;
+    }
+    .pagina-rutinas main.contenido-articulo {
+        padding: 20px 15px;
+    }
+    .pagina-rutinas .navbar {
+        position: static;
+        padding: 14px;
+    }
+    .rutinas-nav {
+        gap: 12px;
+        font-size: 0.85rem;
+    }
+    .rutinas-catalogo {
+        grid-template-columns: 1fr;
+    }
+    .ejercicio-datos {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .ejercicio-contenido {
+        padding: 20px 16px;
+    }
+    .ejercicio-contenido h2 {
+        font-size: 1.35rem;
+    }
+    .ejercicio-demostracion {
+        padding: 12px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .pagina-rutinas * {
+        scroll-behavior: auto;
+    }
+}

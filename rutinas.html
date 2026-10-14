@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rutinas y técnica de ejercicios | FitNew</title>
+    <meta name="description" content="Guías de ejercicios para el gimnasio con GIFs ilustrados, técnica, ejemplos de series y repeticiones y explicación del fallo muscular y el RIR.">
+    <meta name="keywords" content="rutinas gimnasio principiantes, ejercicios con GIF, press banca, series repeticiones, RIR, FitNew">
+    <meta name="robots" content="index, follow">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/rutinas.css">
+    <script src="js/rutinas.js" defer></script>
+</head>
+<body class="pagina-rutinas">
+    <header class="navbar">
+        <div class="logo"><a href="index.html"><img src="img/logo.png" alt="FitNew: ir al inicio"></a></div>
+        <nav class="rutinas-nav" aria-label="Navegación principal">
+            <a href="rutinas.html" aria-current="page">Rutinas</a>
+            <a href="index.html#alimentacion">Alimentación</a>
+            <a href="index.html#suplementacion">Suplementación</a>
+        </nav>
+    </header>
+
+    <div class="breadcrumb-container"><p class="breadcrumb"><a href="index.html">Inicio</a> &gt; Rutinas</p></div>
+    <main class="contenido-articulo">
+        <header class="encabezado-articulo">
+            <span class="rutinas-etiqueta">Técnica antes que peso</span>
+            <h1>RUTINAS Y EJERCICIOS</h1>
+            <p class="rutinas-intro">Mira el movimiento, conoce qué músculos trabajan y aprende a leer
+            tus series. Elige una guía de pecho, espalda, piernas o brazos.</p>
+        </header>
+        <nav class="rutinas-grupos" aria-label="Grupos musculares"><a href="rutina-pecho.html">Pecho</a><a href="rutina-espalda.html">Espalda</a><a href="rutina-piernas.html">Piernas</a><a href="rutina-brazos.html">Brazos</a></nav>
+        <div class="rutinas-accesos">
+            <a href="#catalogo">Explorar ejercicios</a>
+            <a href="#series-y-fallo">Series, repeticiones y fallo muscular</a>
+        </div>
+        <div class="rutinas-nota"><p>Guías generales para adultos sanos. Los números son ejemplos de partida,
+        no una prescripción individual. Si estás aprendiendo, practica con poca carga y pide ayuda para revisar la técnica.
+        Detén el ejercicio si aparece dolor agudo, mareo o una pérdida de control.</p></div>
+
+        <section id="catalogo" aria-label="Catálogo de ejercicios">
+            <div class="rutinas-filtros" data-filtros hidden>
+                <label for="buscar-ejercicio">Buscar por ejercicio, músculo o equipo</label>
+                <input type="search" id="buscar-ejercicio" placeholder="Por ejemplo: press, bíceps o polea" autocomplete="off">
+                <div class="rutinas-filtro-botones" role="group" aria-label="Filtrar por grupo muscular">
+                    <button type="button" class="rutinas-filtro" data-grupo-filtro="todos" aria-pressed="true">Todos</button>
+                    <button type="button" class="rutinas-filtro" data-grupo-filtro="pecho" aria-pressed="false">Pecho</button><button type="button" class="rutinas-filtro" data-grupo-filtro="espalda" aria-pressed="false">Espalda</button><button type="button" class="rutinas-filtro" data-grupo-filtro="piernas" aria-pressed="false">Piernas</button><button type="button" class="rutinas-filtro" data-grupo-filtro="brazos" aria-pressed="false">Brazos</button>
+                </div>
+            </div>
+            <p id="resultado-busqueda" class="rutinas-resultados" role="status" aria-live="polite">8 ejercicios disponibles</p>
+            <div class="rutinas-catalogo">
+        <article class="rutina-tarjeta" data-ejercicio="Press de banca con barra Pectorales; participan tríceps y la parte anterior del hombro. Barra y banco plano Pecho" data-grupo="pecho">
+            <img src="img/rutinas/press-banca.png" width="640" height="480" loading="lazy"
+                 alt="Ilustración de press de banca con barra">
+            <div class="rutina-tarjeta-texto">
+                <span class="rutinas-etiqueta">Pecho</span>
+                <h2>Press de banca con barra</h2>
+                <p>3 series de 8–12 repeticiones como ejemplo de partida.</p>
+                <a href="rutina-pecho.html#press-banca">Ver animación y técnica &rarr;</a>
+            </div>
+        </article>
+        <article class="rutina-tarjeta" data-ejercicio="Press inclinado con mancuernas Pectorales, especialmente la zona clavicular; participan hombros y tríceps. Mancuernas y banco inclinado Pecho" data-grupo="pecho">
+            <img src="img/rutinas/press-inclinado.png" width="640" height="480" loading="lazy"
+                 alt="Ilustración de press inclinado con mancuernas">
+            <div class="rutina-tarjeta-texto">
+                <span class="rutinas-etiqueta">Pecho</span>
+                <h2>Press inclinado con mancuernas</h2>
+                <p>2 series de 8–12 repeticiones como ejemplo de partida.</p>
+                <a href="rutina-pecho.html#press-inclinado">Ver animación y técnica &rarr;</a>
+            </div>
+        </article>
+        <article class="rutina-tarjeta" data-ejercicio="Jalón al pecho en polea Dorsales; participan bíceps y músculos que estabilizan las escápulas. Polea alta y barra Espalda" data-grupo="espalda">
+            <img src="img/rutinas/jalon-pecho.png" width="640" height="480" loading="lazy"
+                 alt="Ilustración de jalón al pecho en polea">
+            <div class="rutina-tarjeta-texto">
+                <span class="rutinas-etiqueta">Espalda</span>
+                <h2>Jalón al pecho en polea</h2>
+                <p>3 series de 8–12 repeticiones como ejemplo de partida.</p>
+                <a href="rutina-espalda.html#jalon-pecho">Ver animación y técnica &rarr;</a>
+            </div>
+        </article>
+        <article class="rutina-tarjeta" data-ejercicio="Remo sentado en polea Zona media de la espalda y dorsales; participan bíceps. Polea baja y agarre Espalda" data-grupo="espalda">
+            <img src="img/rutinas/remo-sentado.png" width="640" height="480" loading="lazy"
+                 alt="Ilustración de remo sentado en polea">
+            <div class="rutina-tarjeta-texto">
+                <span class="rutinas-etiqueta">Espalda</span>
+                <h2>Remo sentado en polea</h2>
+                <p>2 series de 8–12 repeticiones como ejemplo de partida.</p>
+                <a href="rutina-espalda.html#remo-sentado">Ver animación y técnica &rarr;</a>
+            </div>
+        </article>
+        <article class="rutina-tarjeta" data-ejercicio="Prensa de piernas Cuádriceps y glúteos; participan otros músculos de la pierna. Máquina de prensa Piernas" data-grupo="piernas">
+            <img src="img/rutinas/prensa-piernas.png" width="640" height="480" loading="lazy"
+                 alt="Ilustración de prensa de piernas">
+            <div class="rutina-tarjeta-texto">
+                <span class="rutinas-etiqueta">Piernas</span>
+                <h2>Prensa de piernas</h2>
+                <p>3 series de 8–12 repeticiones como ejemplo de partida.</p>
+                <a href="rutina-piernas.html#prensa-piernas">Ver animación y técnica &rarr;</a>
+            </div>
+        </article>
+        <article class="rutina-tarjeta" data-ejercicio="Curl femoral sentado Isquiotibiales, en la parte posterior del muslo. Máquina de curl femoral Piernas" data-grupo="piernas">
+            <img src="img/rutinas/curl-femoral.png" width="640" height="480" loading="lazy"
+                 alt="Ilustración de curl femoral sentado">
+            <div class="rutina-tarjeta-texto">
+                <span class="rutinas-etiqueta">Piernas</span>
+                <h2>Curl femoral sentado</h2>
+                <p>2 series de 8–12 repeticiones como ejemplo de partida.</p>
+                <a href="rutina-piernas.html#curl-femoral">Ver animación y técnica &rarr;</a>
+            </div>
+        </article>
+        <article class="rutina-tarjeta" data-ejercicio="Curl de bíceps con mancuernas Bíceps y otros flexores del codo. Dos mancuernas Brazos" data-grupo="brazos">
+            <img src="img/rutinas/curl-biceps.png" width="640" height="480" loading="lazy"
+                 alt="Ilustración de curl de bíceps con mancuernas">
+            <div class="rutina-tarjeta-texto">
+                <span class="rutinas-etiqueta">Brazos</span>
+                <h2>Curl de bíceps con mancuernas</h2>
+                <p>2 series de 8–12 repeticiones como ejemplo de partida.</p>
+                <a href="rutina-brazos.html#curl-biceps">Ver animación y técnica &rarr;</a>
+            </div>
+        </article>
+        <article class="rutina-tarjeta" data-ejercicio="Extensión de tríceps en polea Tríceps, en la parte posterior del brazo. Polea alta y barra corta Brazos" data-grupo="brazos">
+            <img src="img/rutinas/extension-triceps.png" width="640" height="480" loading="lazy"
+                 alt="Ilustración de extensión de tríceps en polea">
+            <div class="rutina-tarjeta-texto">
+                <span class="rutinas-etiqueta">Brazos</span>
+                <h2>Extensión de tríceps en polea</h2>
+                <p>2 series de 8–12 repeticiones como ejemplo de partida.</p>
+                <a href="rutina-brazos.html#extension-triceps">Ver animación y técnica &rarr;</a>
+            </div>
+        </article></div>
+            <p id="busqueda-vacia" hidden>Sin coincidencias. Prueba otro nombre o selecciona otro grupo muscular.</p>
+        </section>
+
+        <section class="rutinas-guias" id="series-y-fallo">
+            <h2>Cómo leer «3 series de 8–12 repeticiones»</h2>
+            <p>Una repetición es un movimiento completo. Una serie agrupa varias repeticiones.
+            «3 × 8–12» significa completar tres series, descansar entre ellas y buscar entre ocho y doce
+            repeticiones controladas en cada una. No son tres ejercicios distintos.</p>
+            <p>En las fichas encontrarás un ejemplo de dos o tres series y un descanso orientativo.
+            Si el movimiento todavía no es estable, prioriza practicarlo con menos carga.</p>
+            <h2>Fallo muscular, técnica y repeticiones en reserva</h2>
+            <p><strong>Fallo muscular momentáneo:</strong> llega cuando ya no puedes completar otra repetición
+            con la técnica prevista. Si para continuar necesitas rebotar, balancearte o perder los apoyos,
+            termina la serie: la calidad del movimiento ya se ha deteriorado.</p>
+            <p><strong>RIR</strong> significa «repeticiones en reserva». Dejar 2–3 RIR es terminar
+            cuando calculas que aún podrías hacer dos o tres repeticiones controladas. Es una estimación,
+            que mejora con la práctica.</p>
+            <div class="rutinas-nota"><p>Ejemplo: haces diez repeticiones y estimas que podrías completar
+            otras dos con la misma técnica. Terminaste aproximadamente con 2 RIR.</p></div>
+            <p>La revisión de ACSM de 2026 indica que llegar al fallo no es necesario para obtener beneficios.
+            Por eso estas guías usan un margen de esfuerzo y no proponen el fallo como objetivo obligatorio.</p>
+            <h2>Cómo progresar</h2>
+            <p>Registra la carga y las repeticiones reales. Cuando completes el extremo alto del rango
+            en todas las series, con control y el margen previsto, puedes probar un incremento pequeño
+            de carga. Si la técnica empeora, mantén o reduce el peso.</p>
+            <p>Estas fichas cubren ejercicios de cuatro grupos. Para organizar una semana completa,
+            considera también el resto del cuerpo, la recuperación y tu experiencia. ACSM destaca
+            entrenar los principales grupos musculares al menos dos veces por semana.</p>
+        </section>
+        
+        <section class="rutinas-fuentes" id="fuentes">
+            <h2>Fuentes y créditos</h2>
+            <ul>
+                <li><a href="https://doi.org/10.1249/MSS.0000000000003897" target="_blank" rel="noopener noreferrer">ACSM (2026): revisión sobre entrenamiento de fuerza, hipertrofia y esfuerzo</a>.</li>
+                <li><a href="https://acsm.org/resistance-training-guidelines-update-2026/" target="_blank" rel="noopener noreferrer">ACSM: resumen de las recomendaciones de 2026</a>.</li>
+                <li><a href="https://doi.org/10.1249/MSS.0b013e3181915670" target="_blank" rel="noopener noreferrer">ACSM (2009): progresión del entrenamiento de resistencia</a>. Referencia del rango práctico de repeticiones; se interpreta junto con la revisión actual.</li>
+                <li>Las referencias de técnica se enlazan en cada ficha. Redacción explicativa de FitNew a partir de las fuentes consultadas.</li>
+                <li>Ilustraciones de <a href="https://github.com/everkinetic/data">Everkinetic / Greg Priday</a> bajo
+                    <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.es">CC BY-SA 4.0</a>, adaptadas a GIF y PNG.
+                    <a href="img/rutinas/creditos.json">Ver origen de cada archivo</a>.</li>
+            </ul>
+        </section>
+        <div class="bloque-retorno"><a class="btn-volver" href="index.html#rutinas">&larr; Volver a la página principal</a></div>
+    </main>
+    <footer>
+        <p>&copy; FitNew - Todos los derechos reservados, excepto las ilustraciones con licencia indicada.</p>
+        <img src="img/logoPie.png" alt="Logo FitNew" class="logo-footer">
+        <p class="rutinas-pie">Ilustraciones: <a href="https://github.com/everkinetic/data">Everkinetic / Greg Priday</a>,
+        <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.es">CC BY-SA 4.0</a>. GIFs adaptados a partir de dos posiciones.
+        <a href="img/rutinas/creditos.json">Créditos de cada ilustración</a>.</p>
+    </footer>
+</body>
+</html>
