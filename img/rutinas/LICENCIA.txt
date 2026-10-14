@@ -1,0 +1,6 @@
+Ilustraciones de ejercicios: Everkinetic / Greg Priday.
+Fuente: https://github.com/everkinetic/data
+Licencia de las ilustraciones originales y las adaptaciones GIF/PNG: CC BY-SA 4.0.
+https://creativecommons.org/licenses/by-sa/4.0/deed.es
+Adaptación para FitNew: tamaño uniforme, fondo blanco y animación de dos posiciones.
+Cada origen y archivo se detalla en creditos.json. Esta licencia corresponde a las ilustraciones.

@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
+    <link rel="stylesheet" href="css/rutinas.css">
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -511,18 +511,59 @@
 
     <main>
         <!-- SECCIÓN 1: RUTINAS -->
-        <section class="seccion reveal" id="rutinas">
+                <section class="seccion reveal" id="rutinas">
             <div class="cuadro-header">
                 <i class="fa-solid fa-dumbbell"></i>
                 <h2>RUTINAS</h2>
             </div>
             
-            <div class="rutinas-placeholder">
-                <i class="fa-solid fa-person-running"></i>
-                <h3>Próximamente Rutinas de Entrenamiento</h3>
-                <p>Estamos diseñando rutinas especializadas de hipertrofia, fuerza y acondicionamiento. ¡Mantente atento!</p>
+            <div class="galeria">
+                <div class="items">
+                    <div class="img-container rutina-preview">
+                        <img src="img/rutinas/press-banca.png" alt="Ejercicio de pecho" loading="lazy">
+                    </div>
+                    <div class="contenido-tarjeta">
+                        <h3>RUTINAS DE PECHO</h3>
+                        <p>Press de banca y press inclinado: aprende el empuje, controla el recorrido y elige una carga que puedas manejar.</p>
+                        <a href="rutina-pecho.html">Ver guía <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+                <div class="items">
+                    <div class="img-container rutina-preview">
+                        <img src="img/rutinas/jalon-pecho.png" alt="Ejercicio de espalda" loading="lazy">
+                    </div>
+                    <div class="contenido-tarjeta">
+                        <h3>RUTINAS DE ESPALDA</h3>
+                        <p>Jalón al pecho y remo sentado: combina una tracción vertical y una horizontal con movimiento controlado.</p>
+                        <a href="rutina-espalda.html">Ver guía <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+                <div class="items">
+                    <div class="img-container rutina-preview">
+                        <img src="img/rutinas/prensa-piernas.png" alt="Ejercicio de piernas" loading="lazy">
+                    </div>
+                    <div class="contenido-tarjeta">
+                        <h3>RUTINAS DE PIERNAS</h3>
+                        <p>Prensa y curl femoral: dos movimientos para trabajar la parte delantera y posterior del muslo.</p>
+                        <a href="rutina-piernas.html">Ver guía <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+                <div class="items">
+                    <div class="img-container rutina-preview">
+                        <img src="img/rutinas/curl-biceps.png" alt="Ejercicio de brazos" loading="lazy">
+                    </div>
+                    <div class="contenido-tarjeta">
+                        <h3>RUTINAS DE BRAZOS</h3>
+                        <p>Curl de bíceps y extensión de tríceps: aprende a mover el codo sin impulsarte con el cuerpo.</p>
+                        <a href="rutina-brazos.html">Ver guía <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+                    </div>
+                </div>
             </div>
+            <a class="rutinas-enlace-catalogo" href="rutinas.html">Explorar todos los ejercicios y aprender sobre el fallo muscular &rarr;</a>
+            <p class="rutinas-creditos-inicio">Ilustraciones: <a href="https://github.com/everkinetic/data">Everkinetic / Greg Priday</a>,
+                <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.es">CC BY-SA 4.0</a>.</p>
         </section>
+
 
         <!-- SECCIÓN 2: ALIMENTACIÓN -->
         <section class="seccion reveal" id="alimentacion">
