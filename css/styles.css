@@ -15,6 +15,23 @@ body {
     color: var(--rojo);
 }
 
+.nav-encabezado{
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    font-size: 0.95rem;
+}
+.nav-encabezado a {
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.nav-encabezado a:hover,
+.nav-encabezado a[aria-current="page"] {
+    color: var(--rojo, #b80c09);
+}
+
 main {
     margin: 32px auto;
     padding: 24px;

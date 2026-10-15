@@ -10,6 +10,8 @@
     <meta name="robots" content="index, follow">
 
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/footer.css">
 </head>
 <body>
 
@@ -19,6 +21,11 @@
                 <img src="img/logo.png" alt="FitNew Logo">
             </a>
         </div>
+        <nav class="nav-encabezado" aria-label="Navegación principal">
+            <a href="rutinas.html">Rutinas</a>
+            <a href="index.html#alimentacion">Alimentación</a>
+            <a href="index.html#suplementacion" aria-current="page">Suplementación</a>
+        </nav>
     </header>
 
     <div class="breadcrumb-container">
@@ -110,9 +117,54 @@
         </section>
     </main>
 
-    <footer>
-        <p>&copy; FitNew - Todos los derechos reservados.</p>
-        <img src="img/logoPie.png" alt="Logo FitNew" class="logo-footer">
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <a class="footer-logo-link" href="index.html" aria-label="FitNew, inicio">
+                    <img src="img/logoPie.png" alt="FitNew" class="logo-footer">
+                </a>
+                <p>Entrena con propósito. Aprende a construir una vida más fuerte y saludable.</p>
+                <p class="footer-credits">Ilustraciones de rutinas: Everkinetic / Greg Priday, <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.es">CC BY-SA 4.0</a>. <a href="img/rutinas/creditos.json">Ver créditos</a>.</p>
+                <div class="social-links" aria-label="Redes sociales">
+                    <!-- Reemplaza # con el enlace de cada perfil. -->
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+                    <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></a>
+                </div>
+            </div>
+            <nav class="footer-column" aria-label="Enlaces de rutinas">
+                <h2>Rutinas</h2>
+                <ul>
+                    <li><a href="rutinas.html">Todas las rutinas</a></li>
+                    <li><a href="rutina-pecho.html">Pecho</a></li>
+                    <li><a href="rutina-espalda.html">Espalda</a></li>
+                    <li><a href="rutina-piernas.html">Piernas</a></li>
+                    <li><a href="rutina-brazos.html">Brazos</a></li>
+                </ul>
+            </nav>
+            <nav class="footer-column" aria-label="Enlaces de alimentación">
+                <h2>Alimentación</h2>
+                <ul>
+                    <li><a href="alimentos-proteina.html">Alimentos con proteína</a></li>
+                    <li><a href="comidas-semana.html">Comidas de la semana</a></li>
+                    <li><a href="desayunos.html">Desayunos</a></li>
+                    <li><a href="alimentacion-vegana.html">Alimentación vegana</a></li>
+                </ul>
+            </nav>
+            <nav class="footer-column" aria-label="Enlaces de suplementación">
+                <h2>Suplementación</h2>
+                <ul>
+                    <li><a href="proteina.html">Proteína</a></li>
+                    <li><a href="creatina.html">Creatina</a></li>
+                    <li><a href="preentreno.html">Pre-entreno</a></li>
+                    <li><a href="cafeina.html">Cafeína</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 FitNew. Todos los derechos reservados.</p>
+            <a href="#">Volver al inicio <i class="fa-solid fa-arrow-up" aria-hidden="true"></i></a>
+        </div>
     </footer>
 
 </body>
