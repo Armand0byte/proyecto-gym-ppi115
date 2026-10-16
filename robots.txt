@@ -1,0 +1,6 @@
+# Publicar este archivo en /robots.txt de la raíz del dominio.
+# Dentro de una subcarpeta de GitHub Pages no se aplica como robots del host.
+User-agent: *
+Allow: /
+
+Sitemap: https://armand0byte.github.io/proyecto-gym-ppi115/sitemap.xml
