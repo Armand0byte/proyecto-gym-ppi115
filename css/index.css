@@ -179,6 +179,15 @@ body {
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
+.intro-sitio {
+    max-width: 690px;
+    margin: 0 auto 40px;
+    color: var(--text-sub);
+    font-size: clamp(0.9rem, 1.7vw, 1.05rem);
+    line-height: 1.7;
+    text-align: center;
+}
+
 .hero-scroll-btn {
     pointer-events: auto;
     display: inline-flex;
