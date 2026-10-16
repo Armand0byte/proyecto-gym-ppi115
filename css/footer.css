@@ -1,0 +1,205 @@
+.site-footer {
+    --primary-red: #b80c09;
+    --primary-red-glow: rgba(184, 12, 9, 0.6);
+    --text-main: #f0f2f5;
+    --text-sub: #a0a5b5;
+    --card-border: rgba(255, 255, 255, 0.08);
+    position: relative;
+    box-sizing: border-box;
+    width: calc(100% + 48px);
+    margin: 32px -24px -24px;
+    background: linear-gradient(135deg, #111319 0%, #08090b 65%);
+    border-top: 1px solid rgba(184, 12, 9, 0.45);
+    box-shadow: 0 -16px 40px rgba(0, 0, 0, 0.2);
+    padding: 58px max(5%, calc((100% - 1300px) / 2)) 0;
+    color: var(--text-main);
+    text-align: left;
+    font-size: 1rem;
+}
+
+.pagina-inicio .site-footer {
+    width: 100%;
+    margin: 0;
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: minmax(230px, 1.5fr) repeat(3, minmax(145px, 1fr));
+    gap: 44px;
+    padding-bottom: 42px;
+}
+
+.footer-brand {
+    max-width: 300px;
+}
+
+.footer-logo-link {
+    display: inline-block;
+    margin-bottom: 14px;
+}
+
+.site-footer .logo-footer {
+    display: block;
+    width: auto;
+    height: 48px;
+    opacity: 0.9;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.footer-logo-link:hover .logo-footer {
+    opacity: 1;
+    transform: translateY(-2px);
+}
+
+.footer-brand p {
+    max-width: 280px;
+    margin: 0;
+    color: var(--text-sub);
+    font-size: 0.9rem;
+}
+
+.footer-brand .footer-credits {
+    margin-top: 12px;
+    font-size: 0.76rem;
+}
+
+.footer-credits a {
+    color: #edc970;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.footer-column h2 {
+    margin: 4px 0 18px;
+    color: var(--text-main);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.footer-column h2::after {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 2px;
+    margin-top: 9px;
+    background: var(--primary-red);
+    box-shadow: 0 0 8px var(--primary-red-glow);
+}
+
+.footer-column ul {
+    display: grid;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.footer-column a,
+.footer-bottom a {
+    color: var(--text-sub);
+    font-size: 0.88rem;
+    text-decoration: none;
+    transition: color 0.25s ease, padding 0.25s ease;
+}
+
+.footer-column a:hover,
+.footer-bottom a:hover {
+    color: #fff;
+}
+
+.footer-column a:hover {
+    padding-left: 4px;
+}
+
+.social-links {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.social-links a {
+    display: inline-flex;
+    width: 38px;
+    height: 38px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--card-border);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--text-sub);
+    text-decoration: none;
+    transition: color 0.25s ease, border-color 0.25s ease, background 0.25s ease, transform 0.25s ease;
+}
+
+.social-links a:hover {
+    transform: translateY(-3px);
+    border-color: var(--primary-red);
+    background: rgba(184, 12, 9, 0.15);
+    color: #fff;
+}
+
+.footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    min-height: 62px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer-bottom p {
+    margin: 0;
+    color: #777d8c;
+    font-size: 0.8rem;
+}
+
+.footer-bottom a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8rem;
+}
+
+@media (max-width: 768px) {
+    .site-footer {
+        padding: 42px 5% 0;
+    }
+
+    .footer-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 34px 24px;
+    }
+
+    .footer-brand {
+        grid-column: 1 / -1;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 640px) {
+    .pagina-rutinas .site-footer {
+        width: calc(100% + 24px);
+        margin: 32px -12px -12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 28px 18px;
+    }
+
+    .footer-brand {
+        grid-column: 1 / -1;
+    }
+
+    .footer-bottom {
+        align-items: flex-start;
+        flex-direction: column;
+        justify-content: center;
+        padding: 14px 0;
+    }
+}
