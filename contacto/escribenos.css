@@ -133,6 +133,39 @@ body.pagina-contacto {
     box-shadow: 0 6px 20px rgba(184, 12, 9, 0.5);
 }
 
+/* Ajustes exactos del Footer para la página de Contacto */
+body.pagina-contacto .site-footer {
+    width: 100%;
+    margin: 0;
+}
+
+.footer-utilidades {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px 24px;
+    padding: 18px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer-utilidades a,
+.footer-utilidades button {
+    background: transparent;
+    border: none;
+    padding: 0;
+    color: #a0a5b5 !important;
+    font-size: 0.88rem;
+    font-family: inherit;
+    text-decoration: none !important;
+    cursor: pointer;
+    transition: color 0.25s ease;
+}
+
+.footer-utilidades a:hover,
+.footer-utilidades button:hover {
+    color: #ffffff !important;
+}
+
 /* Ajuste Responsive */
 @media (max-width: 480px) {
     .contact-card {
