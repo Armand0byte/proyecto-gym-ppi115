@@ -16,6 +16,8 @@ import re
 ROOT = Path(__file__).resolve().parents[1]
 START = '<!-- INICIO SEO GENERADO -->'
 END = '<!-- FIN SEO GENERADO -->'
+GOOGLE_START = '<!-- INICIO GOOGLE ANALYTICS CON CONSENTIMIENTO -->'
+GOOGLE_END = '<!-- FIN GOOGLE ANALYTICS CON CONSENTIMIENTO -->'
 PREFIX = 'TPI115 - 2026 - '
 SOCIAL = [
     'https://www.instagram.com/raynovik_sv/',
@@ -127,15 +129,54 @@ def resource(name, base_href, target):
     directory = posixpath.dirname(urlsplit(effective).path).lstrip('/') or '.'
     return posixpath.relpath(target, directory)
 
-def integrate(text, name, base_href):
+def google_tag(analytics_id):
+    """Bloque visible en cada HTML; solo carga Google al aceptar la medición."""
+    template = '''    __GOOGLE_START__
+    <!-- Google tag (gtag.js): se activa desde el aviso de medición. -->
+    <script>
+    window.iniciarMedicionRayNovik = function (medicionAceptada) {
+        const id = __ANALYTICS_ID__;
+        const config = window.RAYNOVIK_CONFIG || {};
+        if (medicionAceptada === true && config.analyticsId === id && /^G-[A-Z0-9]+$/.test(id)) {
+            if (window.raynovikGoogleTagCargada === id) return true;
+            window.raynovikGoogleTagCargada = id;
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { window.dataLayer.push(arguments); }
+            window.gtag = window.gtag || gtag;
+            gtag('js', new Date());
+            gtag('config', __ANALYTICS_ID__, {
+                allow_google_signals: false,
+                allow_ad_personalization_signals: false
+            });
+            const script = document.createElement('script');
+            script.async = true;
+            script.src = __GOOGLE_URL__;
+            document.head.appendChild(script);
+            return true;
+        }
+        return false;
+    };
+    </script>
+    __GOOGLE_END__'''
+    return (template.replace('__GOOGLE_START__', GOOGLE_START)
+            .replace('__GOOGLE_END__', GOOGLE_END)
+            .replace('__ANALYTICS_ID__', json.dumps(analytics_id))
+            .replace('__GOOGLE_URL__', json.dumps('https://www.googletagmanager.com/gtag/js?id=' + analytics_id)))
+
+def integrate(text, name, base_href, config):
     """Incluye una sola copia de los recursos comunes, respetando base y subcarpetas."""
+    text = re.sub(r'\n[ \t]*' + re.escape(GOOGLE_START) + r'.*?' + re.escape(GOOGLE_END), '', text, flags=re.S)
     text = re.sub(r'\n[ \t]*<link\b[^>]*\bhref=["\'][^"\']*css/complementos\.css["\'][^>]*>', '', text, flags=re.I)
     text = re.sub(r'\n[ \t]*<script\b[^>]*\bsrc=["\'][^"\']*js/(?:configuracion|medicion)\.js["\'][^>]*>\s*</script>', '', text, flags=re.I)
     text = re.sub(r'\s*</head>', '\n</head>', text, count=1, flags=re.I)
+    def shared(target):
+        # Una respuesta 404 puede servirse desde cualquier subcarpeta inexistente.
+        return config['siteUrl'] + target if name == '404.html' else resource(name, base_href, target)
     common = [
-        '    <link rel="stylesheet" href="' + resource(name, base_href, 'css/complementos.css') + '">',
-        '    <script src="' + resource(name, base_href, 'js/configuracion.js') + '" defer></script>',
-        '    <script src="' + resource(name, base_href, 'js/medicion.js') + '" defer></script>',
+        '    <link rel="stylesheet" href="' + shared('css/complementos.css') + '">',
+        '    <script src="' + shared('js/configuracion.js') + '" defer></script>',
+        '    <script src="' + shared('js/medicion.js') + '" defer></script>',
+        google_tag(config['analyticsId']),
     ]
     return text.replace('</head>', '\n'.join(common) + '\n</head>', 1)
 
@@ -226,7 +267,7 @@ def configure(config):
             text = text.replace('</title>', '</title>\n    <meta name="keywords" content="' + escape(keywords, quote=True) + '">', 1)
         source = text
         text = remove_old_metadata(text)
-        text = integrate(text, name, head.base)
+        text = integrate(text, name, head.base, config)
         if 'prefix="og:' not in text:
             text = text.replace('<html lang="es">', '<html lang="es" prefix="og: https://ogp.me/ns#">', 1)
         text = text.replace('</head>', '    ' + metadata(name, title, head.description, config, source) + '\n</head>', 1)
@@ -249,7 +290,7 @@ def configure(config):
     deployment.mkdir(parents=True, exist_ok=True)
     (deployment / 'robots.txt').write_text(robots, encoding='utf-8')
     error_page = '''<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>TPI115 - 2026 - Página no encontrada | RayNovik</title><style>body{margin:0;min-height:100vh;display:grid;place-items:center;padding:24px;box-sizing:border-box;font:18px/1.6 Arial,sans-serif;color:#252525;background:#fff5f4}main{max-width:600px}h1{color:#a50b08;line-height:1.2}a{display:inline-block;padding:12px 20px;border-radius:8px;background:#a50b08;color:white;text-decoration:none}a:focus-visible{outline:3px solid #a1720c;outline-offset:4px}</style></head><body><main><p>RayNovik · Error 404</p><h1>Esta página no está disponible.</h1><p>Puede que el enlace haya cambiado. Desde el inicio puedes encontrar las guías de rutinas, alimentación y suplementación.</p><a href="''' + escape(config['siteUrl'], quote=True) + '''">Ir al inicio de RayNovik</a></main></body></html>'''
-    (ROOT / '404.html').write_text(error_page, encoding='utf-8')
+    (ROOT / '404.html').write_text(integrate(error_page, '404.html', '', config), encoding='utf-8')
     print('Preparadas ' + str(len(pages)) + ' páginas, sitemap y robots.')
     print('Analytics: ' + ('configurado; requiere consentimiento y validación en línea.' if config['analyticsId'] else 'pendiente del ID real de GA4.'))
     print('Search Console: ' + ('etiqueta incorporada; verifica después de publicar.' if config['searchConsoleVerification'] else 'pendiente del código de verificación.'))
