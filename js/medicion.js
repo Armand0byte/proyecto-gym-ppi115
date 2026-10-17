@@ -8,7 +8,6 @@
     const disponible = /^G-[A-Z0-9]+$/.test(id);
     const clave = "raynovik-medicion-v1";
     let decision = null;
-    let cargada = false;
     let activa = false;
     let aviso;
     let origenFoco;
@@ -33,18 +32,10 @@
     });
 
     function activar() {
+        if (typeof window.iniciarMedicionRayNovik !== "function") return;
         window["ga-disable-" + id] = false;
         window.gtag("consent", "update", { analytics_storage: "granted" });
-        if (!cargada) {
-            window.gtag("js", new Date());
-            window.gtag("config", id, { allow_google_signals: false, allow_ad_personalization_signals: false });
-            const script = document.createElement("script");
-            script.async = true;
-            script.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(id);
-            document.head.appendChild(script);
-            cargada = true;
-        }
-        activa = true;
+        activa = window.iniciarMedicionRayNovik(true) === true;
     }
 
     function borrarCookiesDeMedicion() {

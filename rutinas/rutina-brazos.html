@@ -22,6 +22,33 @@
     <link rel="stylesheet" href="css/complementos.css">
     <script src="js/configuracion.js" defer></script>
     <script src="js/medicion.js" defer></script>
+    <!-- INICIO GOOGLE ANALYTICS CON CONSENTIMIENTO -->
+    <!-- Google tag (gtag.js): se activa desde el aviso de medición. -->
+    <script>
+    window.iniciarMedicionRayNovik = function (medicionAceptada) {
+        const id = "G-4BRF4RHD20";
+        const config = window.RAYNOVIK_CONFIG || {};
+        if (medicionAceptada === true && config.analyticsId === id && /^G-[A-Z0-9]+$/.test(id)) {
+            if (window.raynovikGoogleTagCargada === id) return true;
+            window.raynovikGoogleTagCargada = id;
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { window.dataLayer.push(arguments); }
+            window.gtag = window.gtag || gtag;
+            gtag('js', new Date());
+            gtag('config', "G-4BRF4RHD20", {
+                allow_google_signals: false,
+                allow_ad_personalization_signals: false
+            });
+            const script = document.createElement('script');
+            script.async = true;
+            script.src = "https://www.googletagmanager.com/gtag/js?id=G-4BRF4RHD20";
+            document.head.appendChild(script);
+            return true;
+        }
+        return false;
+    };
+    </script>
+    <!-- FIN GOOGLE ANALYTICS CON CONSENTIMIENTO -->
     <!-- INICIO SEO GENERADO -->
     <link rel="canonical" href="https://raynovik.neocities.org/rutinas/rutina-brazos.html">
     <meta name="theme-color" content="#0d0e12">
