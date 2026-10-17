@@ -7,9 +7,10 @@ from argparse import ArgumentParser
 from html import escape
 from html.parser import HTMLParser
 from pathlib import Path
-from urllib.parse import urlsplit, urlunsplit
+from urllib.parse import urljoin, urlsplit, urlunsplit
 from xml.etree.ElementTree import Element, SubElement, ElementTree, indent
 import json
+import posixpath
 import re
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -28,12 +29,14 @@ class Head(HTMLParser):
         super().__init__(convert_charrefs=True)
         self.title = ''
         self.description = ''
+        self.base = ''
         self.in_title = False
         self.feed(text)
 
     def handle_starttag(self, tag, attrs):
         data = dict(attrs)
         if tag == 'title': self.in_title = True
+        if tag == 'base': self.base = data.get('href', '')
         if tag == 'meta' and data.get('name') == 'description': self.description = data.get('content', '')
 
     def handle_endtag(self, tag):
@@ -66,12 +69,77 @@ def breadcrumbs(name, title, base):
         parts.append({'@type': 'ListItem', 'position': 2, 'name': SECTIONS[section], 'item': base + section + '/' + section + '.html'})
         if name != section + '/' + section + '.html':
             parts.append({'@type': 'ListItem', 'position': 3, 'name': title.replace('RayNovik - ', '').replace(' | RayNovik', ''), 'item': base + name})
+    elif name == 'contacto/escribenos.html':
+        parts += [
+            {'@type': 'ListItem', 'position': 2, 'name': 'Contacto', 'item': base + 'contacto.html'},
+            {'@type': 'ListItem', 'position': 3, 'name': 'Escríbenos', 'item': base + name},
+        ]
     else:
         label = {'contacto.html': 'Contacto', 'empieza.html': 'Empieza aquí', 'privacidad.html': 'Privacidad'}.get(name, title)
         parts.append({'@type': 'ListItem', 'position': 2, 'name': label, 'item': base + name})
     return parts
 
-def metadata(name, title, description, config):
+def collection_data(source, name, base):
+    """Conserva las listas propias, tanto en @graph como dentro de mainEntity."""
+    graph = []
+    for raw in re.findall(r'<script\b[^>]*\btype=["\']application/ld\+json["\'][^>]*>(.*?)</script>', source, re.I | re.S):
+        try:
+            document = json.loads(raw)
+        except json.JSONDecodeError as error:
+            raise ValueError('JSON-LD no válido en ' + name) from error
+        documents = document if isinstance(document, list) else [document]
+        for item in documents:
+            if isinstance(item, dict):
+                nodes = item.get('@graph', [item])
+                if isinstance(nodes, list):
+                    graph.extend(node for node in nodes if isinstance(node, dict))
+    collection = next((node for node in graph if node.get('@type') == 'CollectionPage'), {})
+    lists = [node for node in graph if node.get('@type') == 'ItemList']
+    main = collection.get('mainEntity', {})
+    if isinstance(main, dict) and main.get('@type') == 'ItemList':
+        lists.append(main)
+    if not lists:
+        return {}, []
+    website = collection.get('isPartOf', {})
+    website_id = website.get('@id', '') if isinstance(website, dict) else ''
+    old_url = collection.get('url', '')
+    old_base = website_id[:-8] if website_id.endswith('#website') else old_url[:-len(name)] if old_url.endswith(name) else ''
+
+    def rebase(value):
+        if isinstance(value, dict):
+            return {key: rebase(item) for key, item in value.items()}
+        if isinstance(value, list):
+            return [rebase(item) for item in value]
+        if isinstance(value, str) and old_base and value.startswith(old_base):
+            return base + value[len(old_base):]
+        return value
+
+    lists = rebase(lists)
+    for index, item in enumerate(lists):
+        item.setdefault('@id', base + name + ('#guias' if index == 0 else '#guias-' + str(index + 1)))
+    reference = rebase(main).get('@id') if isinstance(main, dict) else None
+    ids = [item['@id'] for item in lists]
+    return {'publisher': {'@id': base + '#organization'},
+            'mainEntity': {'@id': reference if reference in ids else ids[0]}}, lists
+
+def resource(name, base_href, target):
+    effective = urljoin('https://raynovik.invalid/' + name, base_href)
+    directory = posixpath.dirname(urlsplit(effective).path).lstrip('/') or '.'
+    return posixpath.relpath(target, directory)
+
+def integrate(text, name, base_href):
+    """Incluye una sola copia de los recursos comunes, respetando base y subcarpetas."""
+    text = re.sub(r'\n[ \t]*<link\b[^>]*\bhref=["\'][^"\']*css/complementos\.css["\'][^>]*>', '', text, flags=re.I)
+    text = re.sub(r'\n[ \t]*<script\b[^>]*\bsrc=["\'][^"\']*js/(?:configuracion|medicion)\.js["\'][^>]*>\s*</script>', '', text, flags=re.I)
+    text = re.sub(r'\s*</head>', '\n</head>', text, count=1, flags=re.I)
+    common = [
+        '    <link rel="stylesheet" href="' + resource(name, base_href, 'css/complementos.css') + '">',
+        '    <script src="' + resource(name, base_href, 'js/configuracion.js') + '" defer></script>',
+        '    <script src="' + resource(name, base_href, 'js/medicion.js') + '" defer></script>',
+    ]
+    return text.replace('</head>', '\n'.join(common) + '\n</head>', 1)
+
+def metadata(name, title, description, config, source=''):
     base = config['siteUrl']
     url = base if name == 'index.html' else base + name
     image = base + 'img/social/raynovik-og.png'
@@ -80,7 +148,7 @@ def metadata(name, title, description, config):
     section = name.split('/')[0]
     catalog = name in [key + '/' + key + '.html' for key in SECTIONS]
     article = section in SECTIONS and not catalog
-    page_type = 'CollectionPage' if catalog else 'ContactPage' if name == 'contacto.html' else 'WebPage'
+    page_type = 'CollectionPage' if catalog else 'ContactPage' if name in ['contacto.html', 'contacto/escribenos.html'] else 'WebPage'
     page = {'@type': page_type, '@id': url + '#webpage', 'url': url, 'name': title,
             'description': description, 'inLanguage': 'es-SV', 'isPartOf': website,
             'primaryImageOfPage': {'@type': 'ImageObject', 'url': image, 'width': 1200, 'height': 630}}
@@ -97,7 +165,12 @@ def metadata(name, title, description, config):
         page['breadcrumb'] = {'@id': url + '#breadcrumb'}
     if article:
         page['mainEntity'] = {'@id': url + '#article'}
+    lists = []
+    if catalog:
+        extras, lists = collection_data(source, name, base)
+        page.update(extras)
     graph.append(page)
+    graph.extend(lists)
     if article:
         graph.append({'@type': 'Article', '@id': url + '#article', 'headline': title,
                       'description': description, 'image': image, 'inLanguage': 'es-SV',
@@ -143,10 +216,20 @@ def configure(config):
         if not title or not head.description:
             raise ValueError('Falta título o descripción en ' + name)
         text = re.sub(r'<title>.*?</title>', '<title>' + escape(PREFIX + title) + '</title>', text, count=1, flags=re.S)
+        if not re.search(r'<meta\b[^>]*\bname=["\']keywords["\']', text, re.I):
+            keywords = {
+                'contacto.html': 'contacto RayNovik, redes sociales RayNovik, sugerencias para guías de gimnasio',
+                'contacto/escribenos.html': 'formulario de contacto RayNovik, consultas sobre gimnasio, sugerencias de entrenamiento',
+                'empieza.html': 'guía gratuita para empezar en el gimnasio, primeros pasos fitness, RayNovik',
+                'privacidad.html': 'privacidad RayNovik, medición opcional de visitas, preferencias de Analytics',
+            }.get(name, title.replace(' | RayNovik', '') + ', RayNovik')
+            text = text.replace('</title>', '</title>\n    <meta name="keywords" content="' + escape(keywords, quote=True) + '">', 1)
+        source = text
         text = remove_old_metadata(text)
+        text = integrate(text, name, head.base)
         if 'prefix="og:' not in text:
             text = text.replace('<html lang="es">', '<html lang="es" prefix="og: https://ogp.me/ns#">', 1)
-        text = text.replace('</head>', '    ' + metadata(name, title, head.description, config) + '\n</head>', 1)
+        text = text.replace('</head>', '    ' + metadata(name, title, head.description, config, source) + '\n</head>', 1)
         prepared.append((file, text))
     # Solo escribe cuando la configuración y todos los documentos son válidos.
     for file, text in prepared:
@@ -160,7 +243,7 @@ def configure(config):
         SubElement(SubElement(sitemap, 'url'), 'loc').text = config['siteUrl'] if name == 'index.html' else config['siteUrl'] + name
     indent(sitemap, space='  ')
     ElementTree(sitemap).write(ROOT / 'sitemap.xml', encoding='utf-8', xml_declaration=True)
-    robots = '# Publicar este archivo en /robots.txt de la raíz del dominio.\n# Dentro de una subcarpeta de GitHub Pages no se aplica como robots del host.\nUser-agent: *\nAllow: /\n\nSitemap: ' + config['siteUrl'] + 'sitemap.xml\n'
+    robots = '# Publicar este archivo en /robots.txt de la raíz del dominio.\n# Si el sitio usa una subcarpeta, robots debe permanecer en la raíz del host.\nUser-agent: *\nAllow: /\n\nSitemap: ' + config['siteUrl'] + 'sitemap.xml\n'
     (ROOT / 'robots.txt').write_text(robots, encoding='utf-8')
     deployment = ROOT / 'despliegue/raiz-del-dominio'
     deployment.mkdir(parents=True, exist_ok=True)
