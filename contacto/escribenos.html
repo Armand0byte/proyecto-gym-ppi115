@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto | RayNovik</title>
+    <meta name="description" content="Ponte en contacto con el equipo de RayNovik. Resuelve tus dudas sobre rutinas, alimentación y suplementación deportiva.">
+    <meta name="theme-color" content="#0d0e12">
+
+    <!-- Iconos del sitio -->
+    <link rel="icon" href="../img/favicon.ico" sizes="16x16 32x32 48x48">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Hojas de estilo globales y específicas -->
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="escribenos.css">
+    <link rel="stylesheet" href="css/complementos.css">
+</head>
+<body class="pagina-contacto">
+
+    <header class="navbar scrolled" id="navbar">
+        <div class="logo">
+            <a href="../index.html">
+                <img src="../img/logo.png" alt="RayNovik Logo">
+            </a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../index.html">Inicio</a></li>
+            <li><a href="../rutinas/rutinas.html">Rutinas</a></li>
+            <li><a href="../alimentacion/alimentacion.html">Alimentación</a></li>
+            <li><a href="../suplementacion/suplementacion.html">Suplementación</a></li>
+        </ul>
+    </header>
+
+    <main class="contacto-wrapper">
+        <section class="contact-card">
+            <div class="cuadro-header">
+                <i class="fa-solid fa-envelope"></i>
+                <h1>PONTE EN CONTACTO</h1>
+            </div>
+            <p class="contact-subtitle">¿Tienes alguna duda sobre nuestras guías, sugerencias o comentarios? Completa el formulario y te responderemos a la brevedad.</p>
+
+            <form action="https://formspree.io/f/xppqbaww" method="POST" class="contact-form">
+                <div class="form-group">
+                    <label for="nombre"><i class="fa-solid fa-user"></i> Nombre completo:</label>
+                    <input type="text" id="nombre" name="nombre" placeholder="Ej. Juan Pérez" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email"><i class="fa-solid fa-at"></i> Correo electrónico:</label>
+                    <input type="email" id="email" name="email" placeholder="ejemplo@correo.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="asunto"><i class="fa-solid fa-tag"></i> Asunto:</label>
+                    <select id="asunto" name="asunto" required>
+                        <option value="" disabled selected>Selecciona una opción</option>
+                        <option value="rutinas">Consulta sobre Rutinas</option>
+                        <option value="alimentacion">Dudas sobre Alimentación</option>
+                        <option value="suplementos">Dudas sobre Suplementación</option>
+                        <option value="sugerencia">Sugerencia para el sitio web</option>
+                        <option value="otro">Otro</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="mensaje"><i class="fa-solid fa-comment-dots"></i> Mensaje:</label>
+                    <textarea id="mensaje" name="mensaje" rows="5" placeholder="Escribe tu mensaje aquí..." required></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit">
+                    <span>Enviar Mensaje</span>
+                    <i class="fa-solid fa-paper-plane"></i>
+                </button>
+            </form>
+        </section>
+    </main>
+
+    <!-- Footer igual al del index -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <a class="footer-logo-link" href="../index.html" aria-label="RayNovik, inicio">
+                    <img src="../img/logoPie.png" alt="RayNovik" class="logo-footer">
+                </a>
+                <p>Entrena con propósito. Aprende a construir una vida más fuerte y saludable.</p>
+                <div class="social-links" aria-label="Redes sociales">
+                    <a href="https://www.instagram.com/raynovik_sv/" target="_blank" rel="noopener noreferrer" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/share/18ZVRKMmEA/" target="_blank" rel="noopener noreferrer" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://www.tiktok.com/@raynovik" target="_blank" rel="noopener noreferrer" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                </div>
+            </div>
+
+            <nav class="footer-column" aria-label="Enlaces de rutinas">
+                <h2>Rutinas</h2>
+                <ul>
+                    <li><a href="../rutinas/rutinas.html">Todas las rutinas</a></li>
+                    <li><a href="../rutinas/rutina-pecho.html">Pecho</a></li>
+                    <li><a href="../rutinas/rutina-espalda.html">Espalda</a></li>
+                    <li><a href="../rutinas/rutina-piernas.html">Piernas</a></li>
+                    <li><a href="../rutinas/rutina-brazos.html">Brazos</a></li>
+                </ul>
+            </nav>
+
+            <nav class="footer-column" aria-label="Enlaces de alimentación">
+                <h2>Alimentación</h2>
+                <ul>
+                    <li><a href="../alimentacion/alimentos-proteina.html">Alimentos con proteína</a></li>
+                    <li><a href="../alimentacion/comidas-semana.html">Comidas de la semana</a></li>
+                    <li><a href="../alimentacion/desayunos.html">Desayunos</a></li>
+                    <li><a href="../alimentacion/alimentacion-vegana.html">Alimentación vegana</a></li>
+                </ul>
+            </nav>
+
+            <nav class="footer-column" aria-label="Enlaces de suplementación">
+                <h2>Suplementación</h2>
+                <ul>
+                    <li><a href="../suplementacion/proteina.html">Proteína</a></li>
+                    <li><a href="../suplementacion/creatina.html">Creatina</a></li>
+                    <li><a href="../suplementacion/preentreno.html">Pre-entreno</a></li>
+                    <li><a href="../suplementacion/cafeina.html">Cafeína</a></li>
+                </ul>
+            </nav>
+        </div>
+        <nav class="footer-utilidades" aria-label="Información del sitio">
+    <a href="../empieza.html">Empieza aquí: guía gratuita</a>
+    <a href="../contacto.html">Contacto</a>
+    <a href="../privacidad.html">Privacidad</a>
+    <button type="button" data-preferencias-medicion hidden>Preferencias de medición</button>
+</nav>
+        <div class="footer-bottom">
+            <p>&copy; 2026 RayNovik. Todos los derechos reservados.</p>
+            <a href="#">Volver al inicio <i class="fa-solid fa-arrow-up"></i></a>
+        </div>
+    </footer>
+
+</body>
+</html>

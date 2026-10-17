@@ -1,0 +1,178 @@
+/* Estilos Oscuros - RayNovik Contacto */
+
+body.pagina-contacto {
+    background-color: #0d0e12;
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.contacto-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 120px 20px 60px 20px;
+}
+
+.contact-card {
+    background-color: #161820;
+    border: 1px solid #282a36;
+    border-radius: 12px;
+    max-width: 600px;
+    width: 100%;
+    padding: 40px 35px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.contact-card .cuadro-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+.contact-card .cuadro-header i {
+    color: #b80c09;
+    font-size: 1.8rem;
+}
+
+.contact-card h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+.contact-subtitle {
+    color: #a0a5b5;
+    font-size: 0.95rem;
+    text-align: center;
+    margin-bottom: 30px;
+    line-height: 1.5;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #d1d5db;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.form-group label i {
+    color: #b80c09;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    background-color: #0d0e12;
+    border: 1px solid #282a36;
+    border-radius: 6px;
+    padding: 12px 15px;
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-family: 'Poppins', sans-serif;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #b80c09;
+    box-shadow: 0 0 8px rgba(184, 12, 9, 0.4);
+}
+
+.form-group option {
+    background-color: #161820;
+    color: #ffffff;
+}
+
+.btn-submit {
+    background-color: #b80c09;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    padding: 14px 20px;
+    font-size: 1rem;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+    box-shadow: 0 4px 15px rgba(184, 12, 9, 0.3);
+}
+
+.btn-submit:hover {
+    background-color: #d90e0b;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(184, 12, 9, 0.5);
+}
+
+/* Ajustes exactos del Footer para la página de Contacto */
+body.pagina-contacto .site-footer {
+    width: 100%;
+    margin: 0;
+}
+
+.footer-utilidades {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px 24px;
+    padding: 18px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer-utilidades a,
+.footer-utilidades button {
+    background: transparent;
+    border: none;
+    padding: 0;
+    color: #a0a5b5 !important;
+    font-size: 0.88rem;
+    font-family: inherit;
+    text-decoration: none !important;
+    cursor: pointer;
+    transition: color 0.25s ease;
+}
+
+.footer-utilidades a:hover,
+.footer-utilidades button:hover {
+    color: #ffffff !important;
+}
+
+/* Ajuste Responsive */
+@media (max-width: 480px) {
+    .contact-card {
+        padding: 25px 20px;
+    }
+    
+    .contact-card h1 {
+        font-size: 1.4rem;
+    }
+}
