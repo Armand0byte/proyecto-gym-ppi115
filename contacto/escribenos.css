@@ -14,7 +14,10 @@ body.pagina-contacto {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 120px 20px 60px 20px;
+    padding: 24px 20px 60px;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
 }
 
 .contact-card {
@@ -23,6 +26,8 @@ body.pagina-contacto {
     border-radius: 12px;
     max-width: 600px;
     width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
     padding: 40px 35px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
@@ -47,6 +52,8 @@ body.pagina-contacto {
     color: #ffffff;
     letter-spacing: 1px;
     text-align: center;
+    min-width: 0;
+    overflow-wrap: anywhere;
 }
 
 .contact-subtitle {
@@ -67,6 +74,7 @@ body.pagina-contacto {
     display: flex;
     flex-direction: column;
     gap: 8px;
+    min-width: 0;
 }
 
 .form-group label {
@@ -85,6 +93,10 @@ body.pagina-contacto {
 .form-group input,
 .form-group select,
 .form-group textarea {
+    min-width: 0;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
     background-color: #0d0e12;
     border: 1px solid #282a36;
     border-radius: 6px;
@@ -167,6 +179,25 @@ body.pagina-contacto .site-footer {
 }
 
 /* Ajuste Responsive */
+body.pagina-contacto .navbar {
+    position: relative;
+    height: auto;
+    min-height: 75px;
+    padding: 16px 5%;
+    flex-wrap: wrap;
+}
+body.pagina-contacto .logo img { width: 240px; max-width: 100%; height: auto; filter: none; }
+body.pagina-contacto .navbar nav { min-width: 0; max-width: 100%; }
+body.pagina-contacto .nav-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 16px; }
+body.pagina-contacto .nav-links a { display: inline-flex; align-items: center; min-height: 44px; font-size: .8rem; letter-spacing: .5px; }
+body.pagina-contacto .breadcrumb-container { width: calc(100% - 40px); max-width: 960px; margin: 20px auto 0; padding: 12px 16px; border-radius: 6px; background: #161820; }
+body.pagina-contacto .breadcrumb { margin: 0; color: #d1d5db; overflow-wrap: anywhere; }
+body.pagina-contacto .breadcrumb a, .formulario-privacidad a { color: #f0b7b5; text-decoration: underline; text-underline-offset: 3px; }
+.formulario-privacidad { color: #c0c4d0; font-size: .85rem; line-height: 1.6; overflow-wrap: anywhere; }
+body.pagina-contacto .salto-contenido { color: #8f0a07; }
+@media (max-width: 760px) {
+    body.pagina-contacto .navbar { justify-content: center; }
+}
 @media (max-width: 480px) {
     .contact-card {
         padding: 25px 20px;

@@ -3,6 +3,8 @@
     "use strict";
     const config = window.RAYNOVIK_CONFIG || {};
     const id = String(config.analyticsId || "");
+    const origenScript = document.currentScript ? document.currentScript.src : new URL("js/medicion.js", config.siteUrl).href;
+    const privacidadURL = new URL("../privacidad.html", origenScript).href;
     const disponible = /^G-[A-Z0-9]+$/.test(id);
     const clave = "raynovik-medicion-v1";
     let decision = null;
@@ -86,6 +88,7 @@
         '<div class="aviso-medicion-acciones"><button type="button" data-elegir="aceptar">Aceptar medición</button>' +
         '<button type="button" data-elegir="rechazar">Rechazar medición</button></div>';
     aviso.hidden = decision === "aceptar" || decision === "rechazar";
+    aviso.querySelector("a").href = privacidadURL;
     document.body.appendChild(aviso);
     aviso.querySelectorAll("[data-elegir]").forEach(function (boton) {
         boton.addEventListener("click", function () { elegir(boton.dataset.elegir); });
@@ -106,7 +109,10 @@
             window.gtag("event", "descargar_guia", { recurso: "guia_inicio_raynovik" });
         } else if (enlace.closest(".social-links, .contacto-grid")) {
             const url = new URL(enlace.href);
-            window.gtag("event", "visitar_red_social", { plataforma: url.hostname.replace(/^www\./, "") });
+            const plataforma = url.hostname.replace(/^www\./, "");
+            if (["instagram.com", "facebook.com", "tiktok.com"].includes(plataforma)) {
+                window.gtag("event", "visitar_red_social", { plataforma: plataforma });
+            }
         }
     });
     if (decision === "aceptar") activar();
