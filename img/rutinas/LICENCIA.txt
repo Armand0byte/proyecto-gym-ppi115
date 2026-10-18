@@ -4,3 +4,4 @@ Licencia de las ilustraciones originales y las adaptaciones GIF/PNG: CC BY-SA 4.
 https://creativecommons.org/licenses/by-sa/4.0/deed.es
 Adaptación para FitNew: tamaño uniforme, fondo blanco y animación de dos posiciones.
 Cada origen y archivo se detalla en creditos.json. Esta licencia corresponde a las ilustraciones.
+Optimización del 17 de octubre de 2026: copias estáticas WebP con compresión para reducir la descarga, bajo la misma licencia CC BY-SA 4.0.
