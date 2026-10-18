@@ -20,7 +20,7 @@ GOOGLE_START = '<!-- INICIO GOOGLE ANALYTICS CON CONSENTIMIENTO -->'
 GOOGLE_END = '<!-- FIN GOOGLE ANALYTICS CON CONSENTIMIENTO -->'
 PREFIX = 'TPI115 - 2026 - '
 SOCIAL = [
-    'https://www.instagram.com/raynovik_sv/',
+    'https://www.instagram.com/raynovik_/',
     'https://www.facebook.com/share/18ZVRKMmEA/',
     'https://www.tiktok.com/@raynovik',
 ]
