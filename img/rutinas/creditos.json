@@ -3,7 +3,8 @@
     "exercise": "Press de banca con barra",
     "files": [
       "press-banca.gif",
-      "press-banca.png"
+      "press-banca.png",
+      "press-banca.webp"
     ],
     "author": "Everkinetic / Greg Priday",
     "source_repository": "https://github.com/everkinetic/data",
@@ -14,13 +15,14 @@
     ],
     "license": "CC BY-SA 4.0",
     "license_url": "https://creativecommons.org/licenses/by-sa/4.0/deed.es",
-    "adaptation": "Redimensionado sobre fondo blanco y secuencia GIF de dos posiciones. No se cambiaron las poses."
+    "adaptation": "Redimensionado sobre fondo blanco y secuencia GIF de dos posiciones. No se cambiaron las poses. Copia estática WebP comprimida el 17 de octubre de 2026; se conservan las poses y la licencia."
   },
   {
     "exercise": "Press inclinado con mancuernas",
     "files": [
       "press-inclinado.gif",
-      "press-inclinado.png"
+      "press-inclinado.png",
+      "press-inclinado.webp"
     ],
     "author": "Everkinetic / Greg Priday",
     "source_repository": "https://github.com/everkinetic/data",
@@ -31,13 +33,14 @@
     ],
     "license": "CC BY-SA 4.0",
     "license_url": "https://creativecommons.org/licenses/by-sa/4.0/deed.es",
-    "adaptation": "Redimensionado sobre fondo blanco y secuencia GIF de dos posiciones. No se cambiaron las poses."
+    "adaptation": "Redimensionado sobre fondo blanco y secuencia GIF de dos posiciones. No se cambiaron las poses. Copia estática WebP comprimida el 17 de octubre de 2026; se conservan las poses y la licencia."
   },
   {
     "exercise": "Jalón al pecho en polea",
     "files": [
       "jalon-pecho.gif",
-      "jalon-pecho.png"
+      "jalon-pecho.png",
+      "jalon-pecho.webp"
     ],
     "author": "Everkinetic / Greg Priday",
     "source_repository": "https://github.com/everkinetic/data",
@@ -48,13 +51,14 @@
     ],
     "license": "CC BY-SA 4.0",
     "license_url": "https://creativecommons.org/licenses/by-sa/4.0/deed.es",
-    "adaptation": "Redimensionado sobre fondo blanco y secuencia GIF de dos posiciones. No se cambiaron las poses."
+    "adaptation": "Redimensionado sobre fondo blanco y secuencia GIF de dos posiciones. No se cambiaron las poses. Copia estática WebP comprimida el 17 de octubre de 2026; se conservan las poses y la licencia."
   },
   {
     "exercise": "Remo sentado en polea",
     "files": [
       "remo-sentado.gif",
-      "remo-sentado.png"
+      "remo-sentado.png",
+      "remo-sentado.webp"
     ],
     "author": "Everkinetic / Greg Priday",
     "source_repository": "https://github.com/everkinetic/data",
@@ -65,13 +69,14 @@
     ],
     "license": "CC BY-SA 4.0",
     "license_url": "https://creativecommons.org/licenses/by-sa/4.0/deed.es",
-    "adaptation": "Redimensionado sobre fondo blanco y secuencia GIF de dos posiciones. No se cambiaron las poses."
+    "adaptation": "Redimensionado sobre fondo blanco y secuencia GIF de dos posiciones. No se cambiaron las poses. Copia estática WebP comprimida el 17 de octubre de 2026; se conservan las poses y la licencia."
   },
   {
     "exercise": "Prensa de piernas",
     "files": [
       "prensa-piernas.gif",
-      "prensa-piernas.png"
+      "prensa-piernas.png",
+      "prensa-piernas.webp"
     ],
     "author": "Everkinetic / Greg Priday",
     "source_repository": "https://github.com/everkinetic/data",
@@ -82,13 +87,14 @@
     ],
     "license": "CC BY-SA 4.0",
     "license_url": "https://creativecommons.org/licenses/by-sa/4.0/deed.es",
-    "adaptation": "Redimensionado sobre fondo blanco y secuencia GIF de dos posiciones. No se cambiaron las poses."
+    "adaptation": "Redimensionado sobre fondo blanco y secuencia GIF de dos posiciones. No se cambiaron las poses. Copia estática WebP comprimida el 17 de octubre de 2026; se conservan las poses y la licencia."
   },
   {
     "exercise": "Curl femoral sentado",
     "files": [
       "curl-femoral.gif",
-      "curl-femoral.png"
+      "curl-femoral.png",
+      "curl-femoral.webp"
     ],
     "author": "Everkinetic / Greg Priday",
     "source_repository": "https://github.com/everkinetic/data",
@@ -99,13 +105,14 @@
     ],
     "license": "CC BY-SA 4.0",
     "license_url": "https://creativecommons.org/licenses/by-sa/4.0/deed.es",
-    "adaptation": "Redimensionado sobre fondo blanco y secuencia GIF de dos posiciones. No se cambiaron las poses."
+    "adaptation": "Redimensionado sobre fondo blanco y secuencia GIF de dos posiciones. No se cambiaron las poses. Copia estática WebP comprimida el 17 de octubre de 2026; se conservan las poses y la licencia."
   },
   {
     "exercise": "Curl de bíceps con mancuernas",
     "files": [
       "curl-biceps.gif",
-      "curl-biceps.png"
+      "curl-biceps.png",
+      "curl-biceps.webp"
     ],
     "author": "Everkinetic / Greg Priday",
     "source_repository": "https://github.com/everkinetic/data",
@@ -116,13 +123,14 @@
     ],
     "license": "CC BY-SA 4.0",
     "license_url": "https://creativecommons.org/licenses/by-sa/4.0/deed.es",
-    "adaptation": "Redimensionado sobre fondo blanco y secuencia GIF de dos posiciones. No se cambiaron las poses."
+    "adaptation": "Redimensionado sobre fondo blanco y secuencia GIF de dos posiciones. No se cambiaron las poses. Copia estática WebP comprimida el 17 de octubre de 2026; se conservan las poses y la licencia."
   },
   {
     "exercise": "Extensión de tríceps en polea",
     "files": [
       "extension-triceps.gif",
-      "extension-triceps.png"
+      "extension-triceps.png",
+      "extension-triceps.webp"
     ],
     "author": "Everkinetic / Greg Priday",
     "source_repository": "https://github.com/everkinetic/data",
@@ -133,6 +141,6 @@
     ],
     "license": "CC BY-SA 4.0",
     "license_url": "https://creativecommons.org/licenses/by-sa/4.0/deed.es",
-    "adaptation": "Redimensionado sobre fondo blanco y secuencia GIF de dos posiciones. No se cambiaron las poses."
+    "adaptation": "Redimensionado sobre fondo blanco y secuencia GIF de dos posiciones. No se cambiaron las poses. Copia estática WebP comprimida el 17 de octubre de 2026; se conservan las poses y la licencia."
   }
 ]

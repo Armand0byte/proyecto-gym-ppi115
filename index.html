@@ -24,6 +24,9 @@
 
     <!-- Schema.org es el vocabulario; JSON-LD es el formato que lo representa. -->
 
+    <!-- Prioridad al fondo principal detectado como LCP por Lighthouse. -->
+    <link rel="preload" as="image" href="img/inicio_img.webp" type="image/webp" fetchpriority="high">
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -147,7 +150,7 @@
     <header class="navbar" id="navbar">
         <div class="logo">
             <a href="index.html">
-                <img src="img/logo.png" alt="RayNovik Logo">
+                <img src="img/logo.webp" alt="RayNovik Logo" width="640" height="103">
             </a>
         </div>
         <ul class="nav-links">
@@ -184,7 +187,7 @@
             <div class="galeria">
                 <div class="items">
                     <div class="img-container rutina-preview">
-                        <img src="img/rutinas/press-banca.png" alt="Ejercicio de pecho" loading="lazy">
+                        <img src="img/rutinas/press-banca.webp" alt="Ejercicio de pecho" loading="lazy" width="640" height="480">
                     </div>
                     <div class="contenido-tarjeta">
                         <h3>RUTINAS DE PECHO</h3>
@@ -194,7 +197,7 @@
                 </div>
                 <div class="items">
                     <div class="img-container rutina-preview">
-                        <img src="img/rutinas/jalon-pecho.png" alt="Ejercicio de espalda" loading="lazy">
+                        <img src="img/rutinas/jalon-pecho.webp" alt="Ejercicio de espalda" loading="lazy" width="640" height="480">
                     </div>
                     <div class="contenido-tarjeta">
                         <h3>RUTINAS DE ESPALDA</h3>
@@ -204,7 +207,7 @@
                 </div>
                 <div class="items">
                     <div class="img-container rutina-preview">
-                        <img src="img/rutinas/prensa-piernas.png" alt="Ejercicio de piernas" loading="lazy">
+                        <img src="img/rutinas/prensa-piernas.webp" alt="Ejercicio de piernas" loading="lazy" width="640" height="480">
                     </div>
                     <div class="contenido-tarjeta">
                         <h3>RUTINAS DE PIERNAS</h3>
@@ -214,7 +217,7 @@
                 </div>
                 <div class="items">
                     <div class="img-container rutina-preview">
-                        <img src="img/rutinas/curl-biceps.png" alt="Ejercicio de brazos" loading="lazy">
+                        <img src="img/rutinas/curl-biceps.webp" alt="Ejercicio de brazos" loading="lazy" width="640" height="480">
                     </div>
                     <div class="contenido-tarjeta">
                         <h3>RUTINAS DE BRAZOS</h3>
@@ -240,7 +243,7 @@
                 <!-- Card 1 -->
                 <div class="items">
                     <div class="img-container">
-                        <img src="img/alimentoProte.jpg" alt="Proteína">
+                        <img src="img/alimentoProte.webp" alt="Proteína" width="547" height="365" loading="lazy">
                         <div class="img-overlay"></div>
                     </div>
                     <div class="contenido-tarjeta">
@@ -253,7 +256,7 @@
                 <!-- Card 2 -->
                 <div class="items">
                     <div class="img-container">
-                        <img src="img/dieta.jpg" alt="Dieta">
+                        <img src="img/dieta.jpg" alt="Dieta" width="678" height="452" loading="lazy">
                         <div class="img-overlay"></div>
                     </div>
                     <div class="contenido-tarjeta">
@@ -266,7 +269,7 @@
                 <!-- Card 3 -->
                 <div class="items">
                     <div class="img-container">
-                        <img src="img/desayuno.jpg" alt="Desayuno">
+                        <img src="img/desayuno.jpg" alt="Desayuno" width="592" height="337" loading="lazy">
                         <div class="img-overlay"></div>
                     </div>
                     <div class="contenido-tarjeta">
@@ -279,7 +282,7 @@
                 <!-- Card 4 -->
                 <div class="items">
                     <div class="img-container">
-                        <img src="img/Vegano.jpg" alt="Vegano">
+                        <img src="img/Vegano.jpg" alt="Vegano" width="773" height="396" loading="lazy">
                         <div class="img-overlay"></div>
                     </div>
                     <div class="contenido-tarjeta">
@@ -303,7 +306,7 @@
                 <!-- Card 1 -->
                 <div class="items">
                     <div class="img-container">
-                        <img src="img/proteina.jpg" alt="Proteína">
+                        <img src="img/proteina.webp" alt="Proteína" width="520" height="347" loading="lazy">
                         <div class="img-overlay"></div>
                     </div>
                     <div class="contenido-tarjeta">
@@ -316,7 +319,7 @@
                 <!-- Card 2 -->
                 <div class="items">
                     <div class="img-container">
-                        <img src="img/creatina.png" alt="Creatina">
+                        <img src="img/creatina.webp" alt="Creatina" width="1100" height="500" loading="lazy">
                         <div class="img-overlay"></div>
                     </div>
                     <div class="contenido-tarjeta">
@@ -329,7 +332,7 @@
                 <!-- Card 3 -->
                 <div class="items">
                     <div class="img-container">
-                        <img src="img/preentreno.jpg" alt="Pre-entreno">
+                        <img src="img/preentreno.webp" alt="Pre-entreno" width="1280" height="679" loading="lazy">
                         <div class="img-overlay"></div>
                     </div>
                     <div class="contenido-tarjeta">
@@ -342,7 +345,7 @@
                 <!-- Card 4 -->
                 <div class="items">
                     <div class="img-container">
-                        <img src="img/cafeina.jpg" alt="Cafeína">
+                        <img src="img/cafeina.webp" alt="Cafeína" width="1280" height="720" loading="lazy">
                         <div class="img-overlay"></div>
                     </div>
                     <div class="contenido-tarjeta">
@@ -360,7 +363,7 @@
         <div class="footer-container">
             <div class="footer-brand">
                 <a class="footer-logo-link" href="index.html" aria-label="RayNovik, inicio">
-                    <img src="img/logoPie.png" alt="RayNovik" class="logo-footer">
+                    <img src="img/logoPie.webp" alt="RayNovik" class="logo-footer" width="640" height="112">
                 </a>
                 <p>Entrena con propósito. Aprende a construir una vida más fuerte y saludable.</p>
                 <p class="footer-credits">Ilustraciones de rutinas: Everkinetic / Greg Priday, <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.es">CC BY-SA 4.0</a>. <a href="img/rutinas/creditos.json">Ver créditos</a>.</p>

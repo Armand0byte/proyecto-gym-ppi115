@@ -210,6 +210,7 @@ footer {
 
 .img-articulo {
     width: 100%;
+    height: auto;
     max-height: 380px;
     object-fit: cover;
     border-radius: 6px;
